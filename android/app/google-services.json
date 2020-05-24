@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "418888982731",
+    "firebase_url": "https://logos-1ogo5.firebaseio.com",
+    "project_id": "logos-1ogo5",
+    "storage_bucket": "logos-1ogo5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418888982731:android:cffe519edb11bcbeaabb4e",
+        "android_client_info": {
+          "package_name": "com.logos.water_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418888982731-hebhcbo4s6lr4ga6criq3glk85ljc2fr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7cPEvXscaA3bBtLbDnlAFVZcdJhQv9uI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418888982731-hebhcbo4s6lr4ga6criq3glk85ljc2fr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

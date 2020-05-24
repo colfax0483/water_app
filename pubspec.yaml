@@ -1,0 +1,60 @@
+name: navigation_state
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+
+  contacts_service: ^0.3.0 #ref https://pub.dev/packages/contacts_service
+  provider: ^4.0.2 #ref https://pub.dev/packages/provider
+  firebase_core: ^0.4.4+3
+  cloud_firestore: ^0.13.5
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  test: ^1.9.4
+  flutter_launcher_icons: ^0.7.3
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/hot-air-balloon.png"
+
+
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+   - assets/logo.jpg
+   - assets/btn_minus.png
+   - assets/btn_plus.png
+   - assets/btn_next.png
+   - assets/pic_bath.png
+   - assets/summary_wateruse.png
+   - assets/waterdrop.png
+   - assets/welcome.png
+   - assets/bg_main.png
+
+  fonts:
+    - family: BMJua
+      fonts:
+        - asset: assets/fonts/BMJUA.ttf
+    - family: BMDOHYEON
+      fonts:
+        - asset: assets/fonts/BMDOHYEON.ttf
