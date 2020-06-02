@@ -38,7 +38,7 @@ class LoginPageState extends State<LoginPage> {
 
     });
 
-    Navigator.pushNamed(context, PAGE_2);
+    Navigator.pushNamed(context, PREDICT_PAGE);
   }
 
   void _onCancel() => exit(0);
@@ -102,7 +102,7 @@ class LoginPageState extends State<LoginPage> {
                     child: Text('취소'),
                     color: Colors.lightBlueAccent.withOpacity(0.9),
                     //onPressed: _onCancel,
-                    onPressed: () => Navigator.pushNamed(context, PAGE_2)
+                    onPressed: () => Navigator.pushNamed(context, PREDICT_PAGE)
 
                   ),
                 ],

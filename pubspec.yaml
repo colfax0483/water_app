@@ -16,6 +16,9 @@ dependencies:
   provider: ^4.0.2 #ref https://pub.dev/packages/provider
   firebase_core: ^0.4.4+3
   cloud_firestore: ^0.13.5
+  animator: ^2.0.1
+  animated_text_kit: ^2.1.0
+
 
 
 dev_dependencies:
@@ -50,6 +53,19 @@ flutter:
    - assets/waterdrop.png
    - assets/welcome.png
    - assets/bg_main.png
+   - assets/pic_bath.png
+   - assets/pic_bottle.png
+   - assets/pic_dish.png
+   - assets/pic_face.png
+   - assets/pic_main.png
+   - assets/pic_res4.png
+   - assets/pic_res5.png
+   - assets/pic_res6.png
+   - assets/pic_res7.png
+   - assets/pic_rest1.png
+   - assets/pic_teeth.png
+   - assets/pic_wash.png
+   - assets/pic_summing.png
 
   fonts:
     - family: BMJua

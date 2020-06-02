@@ -13,8 +13,16 @@ class SimpleState extends ChangeNotifier {
 }
 
 class Counter with ChangeNotifier{
-
-  var _counter = {'people':0, 'bath':0};
+ // 절약하면 0, 절약안하면 1
+  var _counter = {'predict':0, // 물 사용량 예상
+    'people':0, //page 1
+   'bath':0, 'shmin':0, 'savesh':0,// page2
+   'teeth' : 0, 'teethcup':0, //page3
+    'wash':0, 'washtime':0, 'savewash':0, //page4
+    'toilet':0, 'savetoilet':0, //page5 변기가 몇 개 있나요? __여기까지 화장실
+    'dish':0, 'dishmin' : 0, 'savedish' : 0, //설거지
+    'washer': 0, 'savewasher' :0, //세탁
+  };
 
   getCounter(String obj) => _counter[obj];
   setCounter(String obj, int counter) => _counter[obj] = counter;
