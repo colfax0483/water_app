@@ -241,7 +241,11 @@ class _Kitchen extends State<Kitchen> {
                 opacity: _isVisible ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 500),
                 child: new FlatButton(
-                    onPressed: () => Navigator.pushNamed(context, PAGE_7),
+                    onPressed: () {
+                      count.calcKitchen();
+                      Navigator.pushNamed(context, PAGE_7);
+
+                    },
                     padding: EdgeInsets.all(0.0),
                     child: Image.asset('assets/btn_next.png',
                         width : 100, fit:BoxFit.cover)),

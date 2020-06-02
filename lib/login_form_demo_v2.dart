@@ -13,6 +13,7 @@ import 'page5_exbath5.dart';
 import 'page6_kitchen.dart';
 import 'page7_cloth.dart';
 import 'page_summing_intro.dart';
+import 'page_oneresult.dart';
 import 'resultlist.dart';
 
 void main() => runApp(StateLoginDemo());
@@ -36,6 +37,7 @@ const String PAGE_6 = '/page6';
 const String PAGE_7 = '/page7';
 const String PAGE_8 = '/page8';
 const String SUM_INTRO = '/summingpage';
+const String ONERESULT = '/oneresult';
 const String RESULT = '/listpage';
 
 
@@ -56,7 +58,7 @@ class StateLoginDemo extends StatelessWidget {
           // ROOT_PAGE : (context) => EventSummary(),
           // ROOT_PAGE : (context) => LoginPage(),
           // ROOT_PAGE : (context) => Intro(),
-          ROOT_PAGE : (context) => SummingIntro(),
+          ROOT_PAGE : (context) => Intro(),
           LOGIN_PAGE : (context) => LoginPage(),
           PREDICT_PAGE : (context) => SliderWidget(),
           PAGE_1: (context) => ExBath(),
@@ -67,6 +69,7 @@ class StateLoginDemo extends StatelessWidget {
           PAGE_6: (context) => Kitchen(),
           PAGE_7: (context) => Cloth(),
           SUM_INTRO: (context) => SummingIntro(),
+          ONERESULT: (context) => OneResult(),
           RESULT: (context) => EventSummary(),
         },
       ),

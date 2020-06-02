@@ -140,7 +140,11 @@ class _Exbath5 extends State<ExBath5> {
             ),
           ),
           new FlatButton(
-              onPressed: () => Navigator.pushNamed(context, PAGE_6),
+              onPressed: () {
+                count.calcBath();
+                Navigator.pushNamed(context, PAGE_6);
+
+              },
               padding: EdgeInsets.all(0.0),
               child: Image.asset('assets/btn_next.png',
                   width: 100, fit: BoxFit.cover)),

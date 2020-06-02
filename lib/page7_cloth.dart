@@ -96,46 +96,52 @@ class _Cloth extends State<Cloth> {
                       height: 20.0,
                     ),
                     Text(
-                      "세탁하는 방법은 어떻게 되나요?",
+                      "일주일에 몇 번 빨래를 하나요?",
                       style: TextStyle(fontFamily: 'BMDOHYEON', fontSize: 20),
                     ),
                     SizedBox(height: 10.0),
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          FloatingActionButton.extended(
-                            heroTag: 3,
-                            onPressed: (){
-                            setState(() {
-                              count.setCounter('savewasher', 0);
-                              _pressed2[0] = true;
-                              _pressed2[1] = false;
-                            });
-                          }, label: Text('한번에 모아 빨기', style: TextStyle(fontFamily: 'BMJua', fontSize: 20, color: Colors.black)),
-                            backgroundColor: _pressed2[0] ? Colors.grey : Colors.lightBlueAccent,),
-
-                          SizedBox(
-                            height: 20.0, width: 1000
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new FloatingActionButton(
+                          heroTag: 3,
+                          child: new Icon(
+                            Icons.remove,
+                            color: Colors.black,
                           ),
-                          new FloatingActionButton.extended(
-                            heroTag: 4,
-                            onPressed: () {
-                              setState(() {
-                                count.setCounter('savewasher', 1);
-                                _pressed2[0] = false;
-                                _pressed2[1] = true;
-                              },);
-                            }, label: Text('그때그때 바로 빨기', style: TextStyle(fontFamily: 'BMJua', fontSize: 20, color: Colors.black)),
-                            backgroundColor: _pressed2[1] ? Colors.grey : Colors.lightBlueAccent,
+                          onPressed: () {
+                            count.decrement('savewasher');
+                          },
+                          backgroundColor: Colors.white,
+                        ),
+                        SizedBox(width: 15.0),
+                        new Text('${count.getCounter('savewasher')} 번',
+                            style: new TextStyle(fontFamily: 'BMJua', fontSize: 45.0)),
+                        SizedBox(width: 15.0),
+                        new FloatingActionButton(
+                          heroTag: 4,
+                          onPressed: () {
+                            count.increment('savewasher');
+                          },
+                          child: new Icon(
+                            Icons.add,
+                            color: Colors.black,
                           ),
-                        ]),
+                          backgroundColor: Colors.white,
+                        ),
+                      ],
+                    ),
                     SizedBox(height: 20.0),
 
                   ],
                 ),
               ),
               new FlatButton(
-                  onPressed: () => Navigator.pushNamed(context, PAGE_4),
+                  onPressed: () {
+                    count.calcCloth();
+                    Navigator.pushNamed(context, SUM_INTRO);
+
+                  },
                   padding: EdgeInsets.all(0.0),
                   child: Image.asset('assets/btn_next.png',
                       width: 100, fit: BoxFit.cover)),

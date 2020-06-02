@@ -114,7 +114,7 @@ class _Exbath4 extends State<ExBath4> {
                     backgroundColor: Colors.white,
                   ),
                   SizedBox(width: 15.0),
-                  new Text('${count.getCounter('wash')} 번',
+                  new Text('${count.getCounter('wash')} 분',
                       style: new TextStyle(fontFamily: 'BMJua', fontSize: 45.0)),
                   SizedBox(width: 15.0),
                   new FloatingActionButton(
@@ -135,6 +135,23 @@ class _Exbath4 extends State<ExBath4> {
               ),
             ]),
           ),
+
+
+          new FlatButton(
+              onPressed: () => Navigator.pushNamed(context, PAGE_5),
+              padding: EdgeInsets.all(0.0),
+              child: Image.asset('assets/btn_next.png',
+                  width: 100, fit: BoxFit.cover)),
+          SizedBox(height: 90.0)
+        ]),
+      ),
+    );
+  }
+}
+
+
+/*
+물을 잠구고 씻을 때 절약 삭제.
 
           Card(
             child: Column(
@@ -188,14 +205,4 @@ class _Exbath4 extends State<ExBath4> {
               ],
             ),
           ),
-          new FlatButton(
-              onPressed: () => Navigator.pushNamed(context, PAGE_5),
-              padding: EdgeInsets.all(0.0),
-              child: Image.asset('assets/btn_next.png',
-                  width: 100, fit: BoxFit.cover)),
-          SizedBox(height: 90.0)
-        ]),
-      ),
-    );
-  }
-}
+ */

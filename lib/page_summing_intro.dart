@@ -69,7 +69,7 @@ class _SummingIntro extends State<SummingIntro> {
                           fontFamily: "BMYEONSUNG",
                           fontSize: 30.0,
                           color: Colors.white)),
-                  onPressed: () => Navigator.pushNamed(context, LOGIN_PAGE),
+                  onPressed: () => Navigator.pushNamed(context, ONERESULT),
                   borderSide: BorderSide(color: Colors.white),
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(30.0)))
