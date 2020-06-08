@@ -17,31 +17,34 @@ import 'page_oneresult.dart';
 import 'resultlist.dart';
 import 'savewater.dart';
 
+
+
 void main() => runApp(StateLoginDemo());
 
-var loginFormApp = ChangeNotifierProvider(
-  create: (context) => SimpleState(),
-  child: StateLoginDemo(),
-);
+  var loginFormApp = ChangeNotifierProvider(
+    create: (context) => SimpleState(),
+    child: StateLoginDemo(),
+  );
 
-const String ROOT_PAGE = '/';
-const String MAIN_PAGE = '/main';
-const String INTRO_PAGE = '/intro';
-const String LOGIN_PAGE = '/login';
-const String PREDICT_PAGE = '/predict';
-const String PAGE_1 = '/page1';
-const String PAGE_2 = '/page2';
-const String PAGE_3 = '/page3';
-const String PAGE_4 = '/page4';
-const String PAGE_5 = '/page5';
-const String PAGE_6 = '/page6';
-const String PAGE_7 = '/page7';
-const String PAGE_8 = '/page8';
-const String SUM_INTRO = '/summingpage';
-const String ONERESULT = '/oneresult';
+  const String ROOT_PAGE = '/';
+  const String MAIN_PAGE = '/main';
+  const String INTRO_PAGE = '/intro';
+  const String LOGIN_PAGE = '/login';
+  const String PREDICT_PAGE = '/predict';
+  const String PAGE_1 = '/page1';
+  const String PAGE_2 = '/page2';
+  const String PAGE_3 = '/page3';
+  const String PAGE_4 = '/page4';
+  const String PAGE_5 = '/page5';
+  const String PAGE_6 = '/page6';
+  const String PAGE_7 = '/page7';
+  const String PAGE_8 = '/page8';
+  const String SUM_INTRO = '/summingpage';
+  const String ONERESULT = '/oneresult';
 
-const String RESULT = '/listpage';
-const String SAVEWATER = '/savewater';
+  const String RESULT = '/listpage';
+  const String SAVEWATER = '/savewater';
+
 
 
 class StateLoginDemo extends StatelessWidget {
@@ -60,8 +63,7 @@ class StateLoginDemo extends StatelessWidget {
         routes: {
           // ROOT_PAGE : (context) => EventSummary(),
           // ROOT_PAGE : (context) => LoginPage(),
-          // ROOT_PAGE : (context) => Intro(),
-          ROOT_PAGE : (context) => SaveWater(),
+          ROOT_PAGE : (context) => Intro(),
           LOGIN_PAGE : (context) => LoginPage(),
           PREDICT_PAGE : (context) => SliderWidget(),
           PAGE_1: (context) => ExBath(),

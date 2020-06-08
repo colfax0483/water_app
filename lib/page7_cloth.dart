@@ -15,7 +15,6 @@ class Cloth extends StatefulWidget {
 
 class _Cloth extends State<Cloth> {
   Map<int, bool> _pressed1 = {0: false, 1:false};
-  Map<int, bool> _pressed2 = {0: false, 1:false};
 
   @override
   Widget build(BuildContext context) {

@@ -17,8 +17,6 @@ class ExBath4 extends StatefulWidget {
 }
 
 class _Exbath4 extends State<ExBath4> {
-  bool _pressedO = false;
-  bool _pressedX = false;
 
   @override
   Widget build(BuildContext context) {

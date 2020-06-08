@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:animator/animator.dart';
 import 'login_form_demo_v2.dart';

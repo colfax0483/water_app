@@ -9,7 +9,6 @@ class ExBath extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Counter count = Provider.of<Counter>(context);
-    SimpleState user = Provider.of<SimpleState>(context, listen: false);
     return Scaffold(
       appBar: AppBar(title: Text("집에 몇 명이 살고 있나요?", style: TextStyle(
         fontFamily: 'BMDOHYEON'),

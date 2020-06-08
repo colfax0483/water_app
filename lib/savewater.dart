@@ -1,38 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:youtube_player/youtube_player.dart';
+import 'videoplayer.dart';
 
-import 'dart:async';
-
-enum CardType {
-  standard,
-  tappable,
-  selectable,
-}
-
-class Place {
-  final String assetName;
-  final String title;
-  final String description;
-
-  const Place({
-    @required this.assetName,
-    @required this.title,
-    @required this.description,
-  });
-}
-
-List<Place> place(BuildContext context) =>
-    [
-      Place(
-          assetName: "assets/pic_resultBath.png",
-          title: "화장실",
-          description: "변기수조를 절수형으로 설치하여 50% 절수"),
-    ];
-
-class SaveWater extends StatelessWidget {
-  static const height = 338.0;
-
+class SaveWater extends StatelessWidget
+{
   final textstyle = TextStyle(
       fontFamily: 'BMJua',
       fontSize: 45.0,
@@ -460,110 +431,5 @@ class DetailLaundry extends StatelessWidget {
   }
 }
 
-class RelateShow extends StatefulWidget {
-  RelateShow({Key key}) : super(key: key);
 
 
-
-
-  @override
-  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
-}
-
-class _VideoPlayerScreenState extends State<RelateShow> {
-  static const platform = const MethodChannel("np.com.sarbagyastha.example");
-  TextEditingController _idController = TextEditingController();
-  TextEditingController _seekToController = TextEditingController();
-  double _volume = 1.0;
-  VideoPlayerController _videoController;
-  String position = "Get Current Position";
-  String status = "Get Player Status";
-  String videoDuration = "Get Video Duration";
-  String _source = "7QUtEmBT_-w";
-  bool isMute = false;
-  Future<void> _initializeVideoPlayerFuture;
-
-  @override
-  void initState() {
-    getSharedVideoUrl();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('관련영상'),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                YoutubePlayer(
-                  context: context,
-                  source: _source,
-                  quality: YoutubeQuality.HD,
-                  aspectRatio: 16 / 9,
-                  autoPlay: true,
-                  loop: false,
-                  reactToOrientationChange: true,
-                  startFullScreen: false,
-                  controlsActiveBackgroundOverlay: true,
-                  controlsTimeOut: Duration(seconds: 4),
-                  playerMode: YoutubePlayerMode.DEFAULT,
-                  callbackController: (controller) {
-                    _videoController = controller;
-                  },
-                  onError: (error) {
-                    print(error);
-                  },
-                  onVideoEnded: () => _showThankYouDialog(),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                      TextFormField(
-                      controller: _idController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter youtube",
-                  ),
-                ),
-              ]
-          ),)
-        ,
-        ]
-
-    )), // 이 마지막 콤마는 build 메서드에 자동 서식이 잘 적용될 수 있도록 도와줍니다.
-    );
-  }
-  void _showThankYouDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Video Ended"),
-          content: Text("Thank you for trying the plugin!"),
-        );
-      },
-    );
-  }
-  getSharedVideoUrl() async {
-    try {
-      var sharedData = await platform.invokeMethod("getSharedYoutubeVideoUrl");
-      if (sharedData != null && mounted) {
-        setState(() {
-          _source = sharedData;
-          print(_source);
-        });
-      }
-    } on PlatformException catch (e) {
-      print(e.message);
-    }
-  }
-}

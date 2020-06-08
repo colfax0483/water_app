@@ -66,7 +66,7 @@ class _Exbath5 extends State<ExBath5> {
                     backgroundColor: Colors.white,
                   ),
                   SizedBox(width: 15.0),
-                  new Text('${count.getCounter('toilet')} 번',
+                  new Text('${count.getCounter('toilet')} 개',
                       style: new TextStyle(fontFamily: 'BMJua', fontSize: 45.0)),
                   SizedBox(width: 15.0),
                   new FloatingActionButton(

@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'dart:io';
-import 'dart:async';
-import 'package:intl/intl.dart';
-
 import 'login_form_demo_v2.dart';
-import 'state_simple.dart';
 
 class UserListItem {
   String email;
@@ -26,7 +19,6 @@ class UserList {
 }
 
 class EventSummary extends StatelessWidget {
-  final _user = <UserList>[];
 
   Widget _buildUserList() {
     return StreamBuilder<QuerySnapshot>(
@@ -38,6 +30,7 @@ class EventSummary extends StatelessWidget {
         if (!snapshot.hasData) return const Text('Loading . . .');
         final int messageCount = snapshot.data.documents.length;
         return ListView.builder(
+          shrinkWrap: true,
           itemCount: messageCount,
           itemBuilder: (_, int index) {
             final DocumentSnapshot document = snapshot.data.documents[index];
@@ -49,7 +42,8 @@ class EventSummary extends StatelessWidget {
 
             return ListTile(
                 trailing: IconButton(
-                  onPressed: () => document.reference.delete(),
+                  //onPressed: () => document.reference.delete(),
+                  onPressed: () => _showToast(context),
                   icon: Icon(Icons.delete),
                 ),
                 isThreeLine: true,
@@ -74,7 +68,28 @@ class EventSummary extends StatelessWidget {
           style: TextStyle(fontFamily: 'BMDOHYEON'),
         ),
       ),
-      body: _buildUserList(),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(8.0),
+        child:_buildUserList(),
+      ),
+      floatingActionButton:
+      FloatingActionButton.extended(
+        onPressed: () => Navigator.pushNamed(context, SAVEWATER),
+        icon: Icon(Icons.arrow_forward),
+        label: Text('물을 절약하려면?'),
+        backgroundColor: Colors.blueAccent,
+      ),
     );
   }
+}
+
+void _showToast(BuildContext context) {
+  final scaffold = Scaffold.of(context);
+  scaffold.showSnackBar(
+    SnackBar(
+      content: const Text('관리자 기능입니다.'),
+      action: SnackBarAction(
+          label: 'UNDO', onPressed: scaffold.hideCurrentSnackBar),
+    ),
+  );
 }
