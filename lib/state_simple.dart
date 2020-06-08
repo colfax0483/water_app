@@ -4,22 +4,24 @@ import 'dart:math';
 
 class SimpleState extends ChangeNotifier {
   // String _email = "null";
-  var _account = {'email': 'null', 'nick': 'null'};
+  var _account = {'email': 'null@null.com', 'nick': 'nullnick'};
 
   void setAccount(String e, String n) {
     _account['email'] = e;
     _account['nick'] = n;
     notifyListeners();
+
   }
 
-  getAccount() => _account['nick'];
+  getNick() => _account['nick'];
+  getEmail() => _account['email'];
 }
 
 class Counter with ChangeNotifier {
   // 절약하면 0, 절약안하면 1
   var _counter = {
     'predict': 210, // 물 사용량 예상
-    'people': 3, //page 1
+    'people': 1, //page 1
     'bath': 0, 'shmin': 0, 'savesh': 0, // page2
     'teeth': 0, 'teethcup': 0, //page3
     'wash': 0, 'washtime': 0, 'savewash': 0, //page4

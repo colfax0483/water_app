@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 import 'dart:io';
 
@@ -13,13 +13,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
-  final TextEditingController _emailController =
-      TextEditingController();
-  final TextEditingController _passwordController =
-      TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-
-  void _onLogin (BuildContext context) async {
+  void _onLogin(BuildContext context) async {
     final String email = _emailController.text;
     final String nick = _passwordController.text;
     final SimpleState state = Provider.of<SimpleState>(context, listen: false);
@@ -27,16 +24,6 @@ class LoginPageState extends State<LoginPage> {
 
     _emailController.clear();
     _passwordController.clear();
-    Firestore.instance
-        .collection('User')
-        .add({
-      'Email' : email,
-      'Nick' : nick,
-      'water' : 0,
-      'timestamp': DateTime.now()
-      //Timestamp myTimeStamp = Timestamp.fromDate("가져온시간").toDate();
-
-    });
 
     Navigator.pushNamed(context, PREDICT_PAGE);
   }
@@ -45,13 +32,12 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/bg_main.png"), fit: BoxFit.cover)),
+              image: DecorationImage(
+                  image: AssetImage("assets/bg_main.png"), fit: BoxFit.cover)),
           padding: EdgeInsets.fromLTRB(20, 120, 20, 120),
           child: Column(
             children: <Widget>[
@@ -68,22 +54,20 @@ class LoginPageState extends State<LoginPage> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                     border: UnderlineInputBorder(
-                    borderRadius:BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                     hintText: 'ID',
-                    focusedBorder: InputBorder.none
-                ),
+                    focusedBorder: InputBorder.none),
                 controller: _emailController,
               ),
               SizedBox(height: 15.0),
               TextFormField(
                 key: Key('password'),
                 // obscureText: true,
-                decoration:  InputDecoration(
+                decoration: InputDecoration(
                     border: UnderlineInputBorder(
-                        borderRadius:BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                     hintText: 'NickName',
-                    focusedBorder: InputBorder.none
-                ),
+                    focusedBorder: InputBorder.none),
                 controller: _passwordController,
               ),
               SizedBox(height: 10.0),
@@ -91,25 +75,22 @@ class LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   RaisedButton(
-                    key: Key('login'),
-                    child: Text('로그인'),
-                    color: Colors.lightBlueAccent.withOpacity(0.9),
-                    onPressed: () => _onLogin(context)
-                  ),
+                      key: Key('login'),
+                      child: Text('로그인'),
+                      color: Colors.lightBlueAccent.withOpacity(0.9),
+                      onPressed: () => _onLogin(context)),
                   SizedBox(width: 10.0),
                   RaisedButton(
-                    key: Key('cancel'),
-                    child: Text('취소'),
-                    color: Colors.lightBlueAccent.withOpacity(0.9),
-                    //onPressed: _onCancel,
-                    onPressed: () => Navigator.pushNamed(context, PREDICT_PAGE)
-
-                  ),
+                      key: Key('cancel'),
+                      child: Text('취소'),
+                      color: Colors.lightBlueAccent.withOpacity(0.9),
+                      //onPressed: _onCancel,
+                      onPressed: () =>
+                          Navigator.pushNamed(context, PREDICT_PAGE)),
                 ],
               ),
             ],
           ),
         ));
   }
-
 }

@@ -15,6 +15,7 @@ import 'page7_cloth.dart';
 import 'page_summing_intro.dart';
 import 'page_oneresult.dart';
 import 'resultlist.dart';
+import 'savewater.dart';
 
 void main() => runApp(StateLoginDemo());
 
@@ -38,7 +39,9 @@ const String PAGE_7 = '/page7';
 const String PAGE_8 = '/page8';
 const String SUM_INTRO = '/summingpage';
 const String ONERESULT = '/oneresult';
+
 const String RESULT = '/listpage';
+const String SAVEWATER = '/savewater';
 
 
 class StateLoginDemo extends StatelessWidget {
@@ -58,7 +61,7 @@ class StateLoginDemo extends StatelessWidget {
           // ROOT_PAGE : (context) => EventSummary(),
           // ROOT_PAGE : (context) => LoginPage(),
           // ROOT_PAGE : (context) => Intro(),
-          ROOT_PAGE : (context) => Intro(),
+          ROOT_PAGE : (context) => SaveWater(),
           LOGIN_PAGE : (context) => LoginPage(),
           PREDICT_PAGE : (context) => SliderWidget(),
           PAGE_1: (context) => ExBath(),
@@ -71,6 +74,8 @@ class StateLoginDemo extends StatelessWidget {
           SUM_INTRO: (context) => SummingIntro(),
           ONERESULT: (context) => OneResult(),
           RESULT: (context) => EventSummary(),
+          SAVEWATER: (context) => SaveWater(),
+
         },
       ),
     );

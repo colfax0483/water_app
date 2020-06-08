@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:animator/animator.dart';
+import 'state_simple.dart';
 import 'login_form_demo_v2.dart';
 
 class SummingIntro extends StatefulWidget {
@@ -16,6 +18,21 @@ class SummingIntro extends StatefulWidget {
 
 class _SummingIntro extends State<SummingIntro> {
   final AnimatorKey animatorKey = AnimatorKey<double>();
+
+  void _store(BuildContext context) async {
+    final SimpleState state = Provider.of<SimpleState>(context, listen: false);
+    final Counter count = Provider.of<Counter>(context, listen: false);
+    Firestore.instance.collection('User').add({
+      'Email': state.getEmail(),
+      'Nick': state.getNick(),
+      'bath': count.getCounter('bathresult'),
+      'kitchen': count.getCounter('kitresult'),
+      'cloth': count.getCounter('clothresult'),
+      'water': count.getCounter('total'),
+      'timestamp': DateTime.now()
+      //Timestamp myTimeStamp = Timestamp.fromDate("가져온시간").toDate();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +86,10 @@ class _SummingIntro extends State<SummingIntro> {
                           fontFamily: "BMYEONSUNG",
                           fontSize: 30.0,
                           color: Colors.white)),
-                  onPressed: () => Navigator.pushNamed(context, ONERESULT),
+                  onPressed: () {
+                    _store(context);
+                    Navigator.pushNamed(context, ONERESULT);
+                  },
                   borderSide: BorderSide(color: Colors.white),
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(30.0)))

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-import 'dart:math';
-
 import 'login_form_demo_v2.dart';
 import 'state_simple.dart';
 
@@ -53,8 +51,6 @@ class _OneResult extends State<OneResult> {
         barColor: charts.ColorUtil.fromDartColor(Colors.blue),
       ),
     ];
-
-
   }
 
   @override
@@ -63,13 +59,13 @@ class _OneResult extends State<OneResult> {
 
     data2 = [
       WaterStat(
-          locate: '화장실',
-          count: count.getCounter('bathresult').toDouble(),
-          barColor: charts.ColorUtil.fromDartColor(Colors.red),
-    ),
-    WaterStat(
-      locate: '부엌',
-      count: count.getCounter('kitresult').toDouble(),
+        locate: '화장실',
+        count: count.getCounter('bathresult').toDouble(),
+        barColor: charts.ColorUtil.fromDartColor(Colors.red),
+      ),
+      WaterStat(
+        locate: '부엌',
+        count: count.getCounter('kitresult').toDouble(),
         barColor: charts.ColorUtil.fromDartColor(Colors.green),
       ),
       WaterStat(
@@ -85,83 +81,90 @@ class _OneResult extends State<OneResult> {
           "오늘의 물 사용량",
           style: TextStyle(fontFamily: 'BMDOHYEON'),
         )),
-        body: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/bg_main.png"),
-                    fit: BoxFit.cover)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                new Card(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 15.0,
-                        width: 500,
-                      ),
-                      Text(
-                        "당신이 예상한 물 사용량은 ... ${count.getCounter("predict")} L",
-                        style: TextStyle(fontFamily: 'BMDOHYEON', fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10.0),
-                new Card(
-                  child: Column(children: <Widget>[
-                    SizedBox(height:10.0),
-                    Text(
-                      "실제 물 사용량",
-                      style: TextStyle(fontFamily: 'BMDOHYEON', fontSize: 20),
-                    ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(12),
-                      child: Card(
-                        child: MyBarChart(data2),
+        body: SingleChildScrollView(
+            child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/bg_main.png"),
+                        fit: BoxFit.cover)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    new Card(
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 15.0,
+                            width: 500,
+                          ),
+                          Text(
+                            "당신이 예상한 물 사용량은 ... ${count.getCounter("predict")} L",
+                            style: TextStyle(
+                                fontFamily: 'BMDOHYEON', fontSize: 20),
+                          ),
+                        ],
                       ),
                     ),
-                    Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Center(
-                          child: Text('총 사용량 : ${count.getCounter('total')} L'
-                              , textAlign: TextAlign.center),
-                        ))
-                  ]),
-                ),
-
-
-
-                SizedBox(height: 10.0),
-                new Card(
-                  child: Column(children: <Widget>[
-                    SizedBox(height:10.0),
-                    Text(
-                      "우리나라 평균 물 사용",
-                      style: TextStyle(fontFamily: 'BMDOHYEON', fontSize: 20),
+                    new Card(
+                      child: Column(children: <Widget>[
+                        SizedBox(height: 10.0),
+                        Text(
+                          "실제 물 사용량",
+                          style:
+                              TextStyle(fontFamily: 'BMDOHYEON', fontSize: 20),
+                        ),
+                        Container(
+                          height: 200,
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(12),
+                          child: Card(
+                            child: MyBarChart(data2),
+                          ),
+                        ),
+                        Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Center(
+                              child: Text(
+                                  '총 사용량 : ${count.getCounter('total')} L',
+                                  textAlign: TextAlign.center),
+                            ))
+                      ]),
                     ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(12),
-                      child: Card(
-                        child: MyBarChart(data),
-                      ),
+                    SizedBox(height: 3.0),
+                    new Card(
+                      child: Column(children: <Widget>[
+                        SizedBox(height: 10.0),
+                        Text(
+                          "우리나라 평균 물 사용",
+                          style:
+                              TextStyle(fontFamily: 'BMDOHYEON', fontSize: 20),
+                        ),
+                        Container(
+                          height: 200,
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(12),
+                          child: Card(
+                            child: MyBarChart(data),
+                          ),
+                        ),
+                        Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Center(
+                              child: Text('총 사용량 : 180 L',
+                                  textAlign: TextAlign.center),
+                            ))
+                      ]),
                     ),
-                    Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Center(
-                          child: Text('총 사용량 : 180 L', textAlign: TextAlign.center),
-                        ))
-                  ]),
-                ),
-              ],
-            )));
+                    new FlatButton(
+                        onPressed: () {
+                          count.calcCloth();
+                          Navigator.pushNamed(context, RESULT);
+                        },
+                        padding: EdgeInsets.all(0.0),
+                        child: Image.asset('assets/btn_next.png',
+                            width: 100, fit: BoxFit.cover)),
+                  ],
+                ))));
   }
 }
 
