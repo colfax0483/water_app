@@ -19,7 +19,6 @@ class UserList {
 }
 
 class EventSummary extends StatelessWidget {
-
   Widget _buildUserList() {
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance
@@ -29,31 +28,35 @@ class EventSummary extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return const Text('Loading . . .');
         final int messageCount = snapshot.data.documents.length;
-        return ListView.builder(
-          shrinkWrap: true,
-          itemCount: messageCount,
-          itemBuilder: (_, int index) {
-            final DocumentSnapshot document = snapshot.data.documents[index];
-            final dynamic message = document['Nick'];
-            final dynamic water = document['water'];
-            final dynamic bath = document['bath'];
-            final dynamic kitchen = document['kitchen'];
-            final dynamic cloth = document['cloth'];
+        return Container(
+          height: 630,
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: messageCount,
+            itemBuilder: (_, int index) {
+              final DocumentSnapshot document = snapshot.data.documents[index];
+              final dynamic message = document['Nick'];
+              final dynamic water = document['water'];
+              final dynamic bath = document['bath'];
+              final dynamic kitchen = document['kitchen'];
+              final dynamic cloth = document['cloth'];
 
-            return ListTile(
-                trailing: IconButton(
-                  //onPressed: () => document.reference.delete(),
-                  onPressed: () => _showToast(context),
-                  icon: Icon(Icons.delete),
-                ),
-                isThreeLine: true,
-                title: Text(
-                  message != null ? message.toString() : '익명',
-                ),
-                //subtitle: Text('Message ${index + 1} of $messageCount'),
-                subtitle: Text('$water 톤의 물을 사용했습니다!\n'
-                    '화장실: $bath, 부엌: $kitchen, 세탁: $cloth'));
-          },
+              return ListTile(
+                  trailing: IconButton(
+                    //onPressed: () => document.reference.delete(),
+                    onPressed: () => _showToast(context),
+                    icon: Icon(Icons.delete),
+                  ),
+                  isThreeLine: true,
+                  title: Text(
+                    message != null ? message.toString() : '익명',
+                  ),
+                  //subtitle: Text('Message ${index + 1} of $messageCount'),
+                  subtitle: Text('$water 톤의 물을 사용했습니다!\n'
+                      '화장실: $bath, 부엌: $kitchen, 세탁: $cloth'));
+            },
+          ),
         );
       },
     );
@@ -70,10 +73,9 @@ class EventSummary extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(8.0),
-        child:_buildUserList(),
+        child: _buildUserList(),
       ),
-      floatingActionButton:
-      FloatingActionButton.extended(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Navigator.pushNamed(context, SAVEWATER),
         icon: Icon(Icons.arrow_forward),
         label: Text('물을 절약하려면?'),

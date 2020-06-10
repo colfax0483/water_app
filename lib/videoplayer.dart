@@ -17,7 +17,7 @@ class _VideoPlayerScreenState extends State<RelateShow> {
   void initState() {
     super.initState();
     //_controller = VideoPlayerController.asset('assets/butterfly.mp4')
-    _controller = VideoPlayerController.network("https://firebasestorage.googleapis.com/v0/b/logos-1ogo5.appspot.com/o/butterfly.mp4?alt=media&token=f2c45e7d-dae7-4078-8f53-d77c035447e8")
+    _controller = VideoPlayerController.network("https://firebasestorage.googleapis.com/v0/b/logos-1ogo5.appspot.com/o/water.mp4?alt=media&token=504a23b8-b6b3-4016-896c-0be4b3c4dd06")
     ..initialize().then((_) {
       setState(() {
         _controller.play();

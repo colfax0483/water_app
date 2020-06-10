@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="water_app"
+        android:label="수도 사용 계산기"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

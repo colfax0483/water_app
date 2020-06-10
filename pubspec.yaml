@@ -14,14 +14,16 @@ dependencies:
 
   contacts_service: ^0.3.0 #ref https://pub.dev/packages/contacts_service
   provider: ^4.0.2 #ref https://pub.dev/packages/provider
-  firebase_core: ^0.4.4+3
+  flutter_android_pip: ^0.0.2
+  firebase_core: ^0.4.0
   cloud_firestore: ^0.13.5
   animator: ^2.0.1
   animated_text_kit: ^2.1.0
   charts_flutter: ^0.9.0
   grinder: ^0.8.4
   custom_chewie: ^0.7.0
-  video_player:
+  firebase_analytics: ^5.0.2
+  video_player: ^0.6.0
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +38,8 @@ flutter_icons:
   ios: true
   image_path: "assets/icon/hot-air-balloon.png"
 
+module:
+  androidX: true
 
 flutter:
 

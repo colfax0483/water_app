@@ -62,7 +62,6 @@ class StateLoginDemo extends StatelessWidget {
         initialRoute: ROOT_PAGE,
         routes: {
           // ROOT_PAGE : (context) => EventSummary(),
-          // ROOT_PAGE : (context) => LoginPage(),
           ROOT_PAGE : (context) => Intro(),
           LOGIN_PAGE : (context) => LoginPage(),
           PREDICT_PAGE : (context) => SliderWidget(),
