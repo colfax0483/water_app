@@ -1,14 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'videoplayer.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 
-class SaveWater extends StatelessWidget
+class SaveWater extends StatefulWidget{
+  @override
+  _SaveWaterPageState createState() => _SaveWaterPageState();
+
+}
+
+class _SaveWaterPageState extends State<SaveWater>
 {
   final textstyle = TextStyle(
       fontFamily: 'BMJua',
       fontSize: 45.0,
       color: Colors.white,
       backgroundColor: Colors.black38);
+
+  BannerAd myBanner;
+
+  BannerAd buildBannerAd(){
+    return BannerAd(
+      adUnitId: 'ca-app-pub-4694527876945328~9557231839',
+      size: AdSize.banner,
+      listener: (MobileAdEvent event){
+        if(event == MobileAdEvent.loaded){
+          myBanner..show();
+        }
+      }
+    );
+  }
+
+  @override
+  void initState(){
+    super.initState();
+
+    FirebaseAdMob.instance.initialize(appId: 'ca-app-pub-4694527876945328~9557231839');
+    myBanner = buildBannerAd()..load();
+  }
+
+  @override
+  void dispose(){
+    myBanner.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +255,12 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body:SingleChildScrollView(
+
+        child:
+
+
+      Column(
         children: [
           SafeArea(
             top: true,
@@ -292,6 +332,7 @@ class DetailScreen extends StatelessWidget {
                 )),
           ),
         ],
+      ),
       ),
     );
   }

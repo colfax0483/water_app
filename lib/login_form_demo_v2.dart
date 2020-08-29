@@ -61,7 +61,6 @@ class StateLoginDemo extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: ROOT_PAGE,
         routes: {
-          // ROOT_PAGE : (context) => EventSummary(),
           ROOT_PAGE : (context) => Intro(),
           LOGIN_PAGE : (context) => LoginPage(),
           PREDICT_PAGE : (context) => SliderWidget(),

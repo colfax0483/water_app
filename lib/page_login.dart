@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 import 'dart:io';
 
 import 'login_form_demo_v2.dart';
@@ -20,13 +19,11 @@ class LoginPageState extends State<LoginPage> {
 
   String _email;
   String _nick;
+
   void _onLogin(BuildContext context) async {
     final String email = _emailController.text;
     final String nick = _passwordController.text;
     final SimpleState state = Provider.of<SimpleState>(context, listen: false);
-
-
-
     state.setAccount(email, nick);
 
     _emailController.clear();
@@ -40,21 +37,22 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/bg_main.png"), fit: BoxFit.cover)),
-          padding: EdgeInsets.fromLTRB(20, 120, 20, 120),
-          child: new Form(
-            key: _formkey,
-            autovalidate: _autoValidate,
-            child: FormUI(),
-          ),
-        ),);
+      resizeToAvoidBottomPadding: false,
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/bg_main.png"), fit: BoxFit.cover)),
+        padding: EdgeInsets.fromLTRB(20, 120, 20, 120),
+        child: new Form(
+          key: _formkey,
+          autovalidate: _autoValidate,
+          child: FormUI(),
+        ),
+      ),
+    );
   }
 
-  Widget FormUI(){
+  Widget FormUI() {
     return new Column(
       children: <Widget>[
         Hero(
@@ -68,17 +66,15 @@ class LoginPageState extends State<LoginPage> {
         TextFormField(
           key: Key('email'),
           keyboardType: TextInputType.emailAddress,
-
           decoration: InputDecoration(
               labelText: 'Email',
-
               border: UnderlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0)),
               hintText: 'example@gmail.com',
               focusedBorder: InputBorder.none),
           validator: validateEmail,
-          onSaved: (String val){
-            _email= val;
+          onSaved: (String val) {
+            _email = val;
           },
           controller: _emailController,
         ),
@@ -103,16 +99,16 @@ class LoginPageState extends State<LoginPage> {
                 child: Text('로그인'),
                 color: Colors.lightBlueAccent.withOpacity(0.9),
                 onPressed: () {
-                  if(_formkey.currentState.validate()){
+                  if (_formkey.currentState.validate()) {
                     _onLogin(context);
                   }
                 }),
             SizedBox(width: 10.0),
             RaisedButton(
               key: Key('cancel'),
-              child: Text('취소'),
+              child: Text('통계보기'),
               color: Colors.lightBlueAccent.withOpacity(0.9),
-              onPressed: _onCancel,
+              onPressed: () => Navigator.pushNamed(context, RESULT),
             ),
           ],
         ),
@@ -122,12 +118,12 @@ class LoginPageState extends State<LoginPage> {
 
   String validateName(String value) {
     if (value.length < 3)
-      return '닉네임은 두 글자 이상이어야 합니다';
+      return '닉네임은 세 글자 이상이어야 합니다';
     else
       return null;
   }
 
-  String validateEmail(String value){
+  String validateEmail(String value) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);

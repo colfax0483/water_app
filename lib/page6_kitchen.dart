@@ -48,7 +48,12 @@ class _Kitchen extends State<Kitchen> {
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/bg_main.png"), fit: BoxFit.cover)),
-        child: Column(
+        child: SingleChildScrollView(
+          child:
+
+
+
+        Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               new Container(
@@ -234,6 +239,7 @@ class _Kitchen extends State<Kitchen> {
                       SizedBox(height: 20.0),
                     ],
                   ),
+
                 ),
               ),
 
@@ -251,6 +257,7 @@ class _Kitchen extends State<Kitchen> {
                         width : 100, fit:BoxFit.cover)),
               ),
             ]
+        ),
         ),
       ),
     );

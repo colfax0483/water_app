@@ -53,7 +53,7 @@ class EventSummary extends StatelessWidget {
                     message != null ? message.toString() : '익명',
                   ),
                   //subtitle: Text('Message ${index + 1} of $messageCount'),
-                  subtitle: Text('$water 톤의 물을 사용했습니다!\n'
+                  subtitle: Text('$water 리터의 물을 사용했습니다!\n'
                       '화장실: $bath, 부엌: $kitchen, 세탁: $cloth'));
             },
           ),

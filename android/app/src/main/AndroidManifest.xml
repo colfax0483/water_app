@@ -9,6 +9,9 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="수도 사용 계산기"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4694527876945328~9557231839"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -26,7 +29,6 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2"
-
             />
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
