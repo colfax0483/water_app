@@ -1,7 +1,10 @@
 # water_app
 
 watercalculator
+My First Flutter App!ㅡ
+it's published on https://play.google.com/store/apps/details?id=com.logos.water_app
 
+### No more records are valid because you stopped accessing the Google Firebase server.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
